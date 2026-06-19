@@ -5,20 +5,53 @@ A multi-stage deep learning pipeline combining YOLOv8 object detection, U²-Net 
 ---
 ## 🖥️ Streamlit Application Interface
 
-### 1. Multi-Stage Pipeline Diagnosis & Leaf Isolation
-<p align="center">
-  <img src="assets/02_pipeline_execution.png" width="85%" alt="Pipeline Execution Step">
-</p>
+To explore the user interface without running the code locally, click on any of the dropdown sections below to expand the screenshot galleries.
 
-### 2. Deep Learning Interpretability via Grad-CAM
-<p align="center">
-  <img src="assets/03_gradcam_visualization.png" width="85%" alt="Grad-CAM Visualization">
-</p>
+<details>
+  <summary>🏠 <b>1. Home Page & Landing Dashboard</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/home_1.png" width="85%" alt="Home Page 1"><br><br>
+    <img src="assets/home_2.png" width="85%" alt="Home Page 2"><br><br>
+    <img src="assets/home_3.png" width="85%" alt="Home Page 3">
+  </p>
+</details>
 
-### 3. Comprehensive Model Analytics & Evaluation Dashboard
-<p align="center">
-  <img src="assets/04_research_dashboard.png" width="85%" alt="Model Analysis Dashboard">
-</p>
+<details>
+  <summary>🥔 <b>2. Potato Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/potato_1.png" width="85%" alt="Potato Page 1"><br><br>
+    <img src="assets/potato_2.png" width="85%" alt="Potato Page 2"><br><br>
+    <img src="assets/potato_3.png" width="85%" alt="Potato Page 3">
+  </p>
+</details>
+
+<details>
+  <summary>🍅 <b>3. Tomato Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/tomato_1.png" width="85%" alt="Tomato Page 1"><br><br>
+    <img src="assets/tomato_2.png" width="85%" alt="Tomato Page 2">
+  </p>
+</details>
+
+<details>
+  <summary>🌽 <b>4. Corn Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/corn_1.png" width="85%" alt="Corn Page 1"><br><br>
+    <img src="assets/corn_2.png" width="85%" alt="Corn Page 2"
+  </p>
+</details>
+
+<details>
+  <summary>📊 <b>5. Model Analysis & Grad-CAM Dashboards</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/gradcam.png" width="85%" alt="Grad-CAM 1">
+  </p>
+</details>
 
 ---
 
