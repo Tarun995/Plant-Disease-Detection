@@ -11,7 +11,7 @@ To explore the user interface without running the code locally, click on any of 
   <summary>🏠 <b>1. Home Page & Landing Dashboard</b></summary>
   <br>
   <p align="center">
-    <img src="assets/home_1.png" width="85%" alt="Home Page 1"><br><br>
+    <img src="assets/screenshots/home_1.png" width="85%" alt="Home Page 1"><br><br>
     <img src="assets/home_2.png" width="85%" alt="Home Page 2"><br><br>
     <img src="assets/home_3.png" width="85%" alt="Home Page 3"><br><br>
     <img src="detection.png" width="85%" alt="Home Page 4">
