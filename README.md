@@ -12,9 +12,9 @@ To explore the user interface without running the code locally, click on any of 
   <br>
   <p align="center">
     <img src="assets/screenshots/home_1.png" width="85%" alt="Home Page 1"><br><br>
-    <img src="assets/home_2.png" width="85%" alt="Home Page 2"><br><br>
-    <img src="assets/home_3.png" width="85%" alt="Home Page 3"><br><br>
-    <img src="detection.png" width="85%" alt="Home Page 4">
+    <img src="assets/screenshots/home_2.png" width="85%" alt="Home Page 2"><br><br>
+    <img src="assets/screenshots/home_3.png" width="85%" alt="Home Page 3"><br><br>
+    <img src="assets/screenshots/detection.png" width="85%" alt="Detection Page">
   </p>
 </details>
 
@@ -22,9 +22,9 @@ To explore the user interface without running the code locally, click on any of 
   <summary>🥔 <b>2. Potato Pipeline & Diagnosis</b></summary>
   <br>
   <p align="center">
-    <img src="assets/potato_1.png" width="85%" alt="Potato Page 1"><br><br>
-    <img src="assets/potato_2.png" width="85%" alt="Potato Page 2"><br><br>
-    <img src="assets/potato_3.png" width="85%" alt="Potato Page 3">
+    <img src="assets/screenshots/potato_1.png" width="85%" alt="Potato Page 1"><br><br>
+    <img src="assets/screenshots/potato_2.png" width="85%" alt="Potato Page 2"><br><br>
+    <img src="assets/screenshots/potato_3.png" width="85%" alt="Potato Page 3">
   </p>
 </details>
 
@@ -32,9 +32,9 @@ To explore the user interface without running the code locally, click on any of 
   <summary>🍅 <b>3. Tomato Pipeline & Diagnosis</b></summary>
   <br>
   <p align="center">
-    <img src="assets/tomato_1.png" width="85%" alt="Tomato Page 1"><br><br>
-    <img src="assets/tomato_2.png" width="85%" alt="Tomato Page 2"><br><br>
-    <img src="assets/tomato_3.png" width="85%" alt="Tomato Page 3">
+    <img src="assets/screenshots/tomato_1.png" width="85%" alt="Tomato Page 1"><br><br>
+    <img src="assets/screenshots/tomato_2.png" width="85%" alt="Tomato Page 2"><br><br>
+    <img src="assets/screenshots/tomato_3.png" width="85%" alt="Tomato Page 3">
   </p>
 </details>
 
@@ -42,8 +42,8 @@ To explore the user interface without running the code locally, click on any of 
   <summary>🌽 <b>4. Corn Pipeline & Diagnosis</b></summary>
   <br>
   <p align="center">
-    <img src="assets/corn_1.png" width="85%" alt="Corn Page 1"><br><br>
-    <img src="assets/corn_2.png" width="85%" alt="Corn Page 2"
+    <img src="assets/screenshots/corn_1.png" width="85%" alt="Corn Page 1"><br><br>
+    <img src="assets/screenshots/corn_2.png" width="85%" alt="Corn Page 2"
   </p>
 </details>
 
