@@ -1,10 +1,61 @@
-# 🌿 Smart Plant Disease Detection System
+#  Smart Plant Disease Detection System
 
 A multi-stage deep learning pipeline combining YOLOv8 object detection, U²-Net background segmentation, and CNNs with custom Attention layers to diagnose plant leaf diseases with high precision.
 
 ---
+## 🖥️ Streamlit Application Interface
 
-## 🚀 Key Features
+To explore the user interface without running the code locally, click on any of the dropdown sections below to expand the screenshot galleries.
+
+<details>
+  <summary>🏠 <b>1. Home Page & Landing Dashboard</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/home_1.png" width="85%" alt="Home Page 1"><br><br>
+    <img src="assets/home_2.png" width="85%" alt="Home Page 2"><br><br>
+    <img src="assets/home_3.png" width="85%" alt="Home Page 3">
+  </p>
+</details>
+
+<details>
+  <summary>🥔 <b>2. Potato Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/potato_1.png" width="85%" alt="Potato Page 1"><br><br>
+    <img src="assets/potato_2.png" width="85%" alt="Potato Page 2"><br><br>
+    <img src="assets/potato_3.png" width="85%" alt="Potato Page 3">
+  </p>
+</details>
+
+<details>
+  <summary>🍅 <b>3. Tomato Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/tomato_1.png" width="85%" alt="Tomato Page 1"><br><br>
+    <img src="assets/tomato_2.png" width="85%" alt="Tomato Page 2">
+  </p>
+</details>
+
+<details>
+  <summary>🌽 <b>4. Corn Pipeline & Diagnosis</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/corn_1.png" width="85%" alt="Corn Page 1"><br><br>
+    <img src="assets/corn_2.png" width="85%" alt="Corn Page 2"
+  </p>
+</details>
+
+<details>
+  <summary>📊 <b>5. Model Analysis & Grad-CAM Dashboards</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/gradcam.png" width="85%" alt="Grad-CAM 1">
+  </p>
+</details>
+
+---
+
+##  Key Features
 - **Leaf Localization**: YOLOv8 extracts leaf bounding boxes to crop extraneous background noise.
 - **Salient Segmentation**: U²-Net computes pixel-wise saliency maps to isolate the leaf structure from soil, neighboring plants, or shadows.
 - **Lesion Isolation**: YOLOv8 flags specific lesion hotspots to create a high-contrast binary mask input.
@@ -13,7 +64,7 @@ A multi-stage deep learning pipeline combining YOLOv8 object detection, U²-Net 
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 ```
 d:\Projects\PlantDiseaseDetection\
 ├── app.py                          ← Home/Landing page (Streamlit entrypoint)
@@ -45,7 +96,7 @@ d:\Projects\PlantDiseaseDetection\
 
 ---
 
-## 📦 Setup and Installation
+##  Setup and Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -113,7 +164,7 @@ See [WEIGHTS_URLS.md](WEIGHTS_URLS.md) for more details.
 
 ---
 
-## 🖥️ Running the Application
+##  Running the Application
 
 Launch the Streamlit web interface locally:
 ```bash
@@ -123,11 +174,33 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ---
 
-## 🔬 Experimental Performance
-Our attention-augmented models achieve substantial improvements over standard CNN baselines:
+##  Core Finding: Depth vs. Dataset Size (Ablation Study)
 
-| Crop Model | Baseline CNN Accuracy | Proposed Attention CNN Accuracy | F1-Score |
+A major focus of this project is investigating the structural trade-off between convolutional neural network (CNN) depth and dataset scale. We evaluated 7-layer (shallow), 14-layer (medium), and 22-layer (deep) architectures trained from scratch across two highly distinct data regimes to observe how network capacity interacts with sample volume:
+
+| Dataset (Volume) | Model Architecture | Accuracy (%) | Empirical Observation & Phenomenon |
 |---|---|---|---|
-| **Potato** | 82.4% | **90.4%** | **90.6%** |
-| **Tomato** | 81.8% | **91.3%** | **91.0%** |
-| **Corn** | 92.1% | **97.8%** | **97.6%** |
+| **Potato** (2,152 images) | 7-layer (Shallow) | **96.67%** | **Optimal Capacity:** Strong generalizability; restricted parameters prevent feature over-memorization on limited samples. |
+| **Potato** (2,152 images) | 14-layer (Medium) | 94.22% | **Variance Inflation:** Increased capacity introduces slight overfitting to non-essential background artifacts. |
+| **Potato** (2,152 images) | 22-layer (Deep) | 33.33% | **Model Collapse:** Severe overfitting and gradient issues cause the network to fail entirely, collapsing to random guessing (1/3 classes). |
+| **Tomato** (18,160 images) | 7-layer (Shallow) | 80.33% | **Underfitting:** Constrained representational capacity fails to map fine-grained lesion features across 10 complex classes. |
+| **Tomato** (18,160 images) | 14-layer (Medium) | **85.99%** | **Data-Capacity Balance:** Higher structural depth successfully models the vast morphological diversity of the larger dataset. |
+
+**Conclusion:** Deeper networks are not universally superior. While an expanded feature extraction stack benefits high-volume, multi-class tasks (Tomato), it can induce total model collapse on localized data regimes (Potato). In data-constrained agricultural applications, a carefully regulated shallow architecture provides superior validation safety.
+
+---
+
+##  Final Optimized Model Performance
+
+To push past baseline performance limits, we integrated customized data workflows and attention mechanisms. For the Potato dataset, we introduced a heavy conditional data augmentation pipeline (spatial rotations, contrast adjustments, and Gaussian noise) to scale training volume. Both architectures were then optimized with mid-level **Squeeze-and-Excitation (SE) blocks** to dynamically recalibrate feature maps.
+
+The final benchmark results of our optimized multi-stage pipeline are structured below:
+
+| Target Crop | Core Network Architecture | Preprocessing & Augmentation | Accuracy | Macro F1 | Total Parameters | Inference Latency |
+|---|---|---|---|---|---|---|
+| **Potato** | 7-Layer CNN + SE Attention | Heavy Augmentation | **97.80%** | **0.96** | 7.39M | 53.3 ms / image |
+| **Tomato** | 14-Layer CNN + SE Attention | U²-Net Background Removed (BR → Orig) | **78.90%** | **0.73** | 6.52M | 55.0 ms / image |
+
+####  Critical Insight: Preprocessing Domain Shift
+* **The Domain Mismatch Challenge (BR → Orig):** Training our 14-layer Tomato model on background-removed (BR) leaf images isolates clean structural boundaries but trains model weights strictly on foreground pixels. When evaluating this specific model configuration against raw test data containing unsegmented field clutter (soil, weeds, or raw illumination variables), accuracy drops from 85.99% to 78.90%.
+* **The Alignment Solution (BR → BR):** Despite the numerical drop when introduced to raw test images, background-removed training establishes significantly higher functional robustness when deployment testing domains are perfectly aligned. By passing production field data through the full multi-stage pipeline—where input images are sequentially cropped via YOLO for leaf tracking and segmented via U²-Net for background extraction before classification—we neutralize background dependency and eliminate misleading field noise correlations.
